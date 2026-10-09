@@ -1453,6 +1453,12 @@ cmd_wallpaper() {
         esac
     done
 
+    if ! ((no_smart)); then
+        local _shell_cfg="${XDG_CONFIG_HOME:-$HOME/.config}/caelestia/shell.json"
+        local _shell_smart
+        _shell_smart="$(py config-dump "$_shell_cfg" 2>/dev/null | awk -F'\t' '$1=="services.smartScheme"{print $2}')" || true
+        [[ "$_shell_smart" == "false" ]] && no_smart=1
+    fi
     ((no_smart)) && smart="false"
     read_meta
 
