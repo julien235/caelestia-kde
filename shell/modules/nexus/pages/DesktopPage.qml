@@ -72,7 +72,6 @@ PageBase {
                 }
                 GlobalConfig.save(); 
             }
-            enabled: Config.background.wallpaperEnabled
         }
 
         ToggleRow {
@@ -89,7 +88,7 @@ PageBase {
                 }
                 GlobalConfig.save();
             }
-            enabled: Config.background.wallpaperEnabled && Config.background.desktopIconsEnabled
+            enabled: Config.background.desktopIconsEnabled
         }
 
         ToggleRow {
@@ -106,7 +105,7 @@ PageBase {
                 }
                 GlobalConfig.save();
             }
-            enabled: Config.background.wallpaperEnabled && Config.background.desktopIconsEnabled && Config.background.materialYouIconsEnabled
+            enabled: Config.background.desktopIconsEnabled && Config.background.materialYouIconsEnabled
         }
 
         SelectRow {
@@ -116,7 +115,7 @@ PageBase {
             subtext: qsTr("Ctrl+scroll on the desktop also changes it")
             menuItems: root.iconSizeItems
             active: root.iconSizeItems.find(i => i.value === DesktopLayout.iconSize) ?? root.iconSizeItems[1]
-            enabled: Config.background.wallpaperEnabled && Config.background.desktopIconsEnabled
+            enabled: Config.background.desktopIconsEnabled
             onSelected: item => DesktopLayout.setIconSize(item.value)
         }
 
@@ -127,7 +126,7 @@ PageBase {
             subtext: qsTr("Keep desktop icons packed; dragging one reorders the rest")
             checked: DesktopLayout.autoArrange
             onToggled: DesktopLayout.setAutoArrange(checked)
-            enabled: Config.background.wallpaperEnabled && Config.background.desktopIconsEnabled
+            enabled: Config.background.desktopIconsEnabled
         }
 
         ToggleRow {
